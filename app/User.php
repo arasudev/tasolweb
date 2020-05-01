@@ -17,7 +17,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'phone', 'gender', 'image', 'breakfast', 'lunch', 'team_id'
     ];
 
     /**
@@ -56,7 +56,7 @@ class User extends Authenticatable implements JWTSubject
      */
     public function getPhotoAttribute($value)
     {
-        if ($value) {
+        if ($this->image) {
             return $value;
         } else {
             if ($this->gender == 'Male') {

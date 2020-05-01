@@ -28,7 +28,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Users
 Route::get('/contacts', 'UserController@getContacts');
-
+Route::resource('users', 'UserController')->middleware('auth');
 
 Route::get('/test', function () {
     return view('user.contacts');

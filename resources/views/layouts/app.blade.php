@@ -36,7 +36,13 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="{{ asset('/assets/plugins/nprogress/nprogress.js') }}"></script>
+
+    <!-- Toaster Alert -->
+{{--    <script src="{{ asset('/assets/plugins/nprogress/nprogress.js') }}"></script>--}}
+{{--    <link href="{{ asset('/assets/toaster/light-theme.min.css') }}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('/assets/toaster/dark-theme.min.css') }}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('/assets/toaster/colored-theme.min.css') }}" rel="stylesheet">--}}
+{{--    <script type="text/javascript" src="{{ asset('/assets/toaster/growl-notification.min.js') }}" />--}}
 </head>
 
 
@@ -68,31 +74,13 @@
             <div class="content">
                 @yield('content')
             </div>
-
         </div>
-
-        <footer class="footer mt-auto">
-            <div class="copyright bg-white">
-                <p>
-                    &copy; <span id="copy-year">2019</span> Copyright Sleek Dashboard Bootstrap Template by
-                    <a
-                        class="text-primary"
-                        href="http://www.iamabdus.com/"
-                        target="_blank"
-                    >Abdus</a
-                    >.
-                </p>
-            </div>
-            <script>
-                var d = new Date();
-                var year = d.getFullYear();
-                document.getElementById("copy-year").innerHTML = year;
-            </script>
-        </footer>
-
     </div>
 </div>
 
+@yield('script')
+
+@include('alert_script')
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCn8TFXGg17HAUcNpkwtxxyT9Io9B_NcM" defer></script>
 <script src="{{ asset('/assets/plugins/jquery/jquery.min.js') }}"></script>

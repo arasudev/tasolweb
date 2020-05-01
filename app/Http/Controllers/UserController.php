@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
+use App\Team;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -24,7 +28,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $teams = Team::all();
+        return view('user.create', compact('teams'));
     }
 
     /**
@@ -33,9 +38,16 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        $input = $request->only(['name', 'email', 'phone', 'gender']);
+        $input['team_id'] = $request->team;
+        $input['breakfast'] = isset($request->food['breakfast']) ? true : false;
+        $input['lunch'] = isset($request->food['lunch']) ? true : false;
+        $randomPassword = random_int(10, 12);
+        $input['password'] = Hash::make($randomPassword);
+        User::create($input);
+        return redirect('/users')->with('success', 'User Created Successfully!');
     }
 
     /**
@@ -46,7 +58,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail(auth()->user()->id);
+        return view('user.show', compact('user'));
     }
 
     /**
@@ -57,7 +70,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $teams = Team::all();
+        return view('user.edit', compact('user', 'teams'));
     }
 
     /**
@@ -65,11 +80,27 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        if ($request->has('old_password')) {
+            if (!Hash::check($request->old_password, $user->password)) {
+                return redirect()->back()->with('error', 'Old password is incorrect!');
+            }
+            $user->update([
+                'password' => Hash::make($request->new_password),
+            ]);
+            return redirect()->back()->with('success', 'Password changed successfully!');
+        }
+        $input = $request->only(['name', 'email', 'phone', 'gender']);
+        $input['team_id'] = $request->team;
+        $input['breakfast'] = isset($request->food['breakfast']) ? true : false;
+        $input['lunch'] = isset($request->food['lunch']) ? true : false;
+        $user->update($input);
+        return redirect()->back()->with('success', 'Profile updated successfully!');
+
     }
 
     /**
