@@ -24,3 +24,12 @@ Auth::routes([
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+
+// Users
+Route::get('/contacts', 'UserController@getContacts');
+
+
+Route::get('/test', function () {
+    return view('user.contacts');
+});

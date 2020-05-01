@@ -549,6 +549,14 @@
                 </li>
 
 
+                <li  class="has-sub" >
+                    <a class="sidenav-item-link" href="/contacts" aria-expanded="false">
+                        <i class="mdi mdi-contact-mail"></i>
+                        <span class="nav-text">Contacts</span>
+                    </a>
+                </li>
+
+
 
             </ul>
 

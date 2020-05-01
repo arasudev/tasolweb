@@ -47,4 +47,23 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    /**
+     * Get the user's photo.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getPhotoAttribute($value)
+    {
+        if ($value) {
+            return $value;
+        } else {
+            if ($this->gender == 'Male') {
+                return asset('/assets/custom/user/male.webp');
+            } else {
+                return asset('/assets/custom/user/female.webp');
+            }
+        }
+    }
 }
