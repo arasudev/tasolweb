@@ -18,7 +18,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::with('team')->get();
+        return view('user.index', compact('users'));
     }
 
     /**
@@ -107,11 +108,17 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
-        //
+        try {
+            $user = User::findOrFail($id);
+            $user->delete();
+            return response()->json(['action' => 'success', 'message' => 'Post deleted successfully']);
+        } catch (\Throwable $exception) {
+            return response()->json(['action' => 'error', 'message' => 'Unable to delete post'], 500);
+        }
     }
 
     public function getContacts()

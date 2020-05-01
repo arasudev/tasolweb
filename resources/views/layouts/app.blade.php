@@ -43,6 +43,8 @@
 {{--    <link href="{{ asset('/assets/toaster/dark-theme.min.css') }}" rel="stylesheet">--}}
 {{--    <link href="{{ asset('/assets/toaster/colored-theme.min.css') }}" rel="stylesheet">--}}
 {{--    <script type="text/javascript" src="{{ asset('/assets/toaster/growl-notification.min.js') }}" />--}}
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 </head>
 
 
