@@ -37,7 +37,7 @@ class UserRequest extends FormRequest
                 'email' => 'required|unique:users,email,' . optional($user)->id . ',id,deleted_at,NULL|min:2|max:255',
                 'phone' => 'required|digits:10|unique:users,phone,' . optional($user)->id . ',id',
                 'team' => 'required|numeric|exists:teams,id,deleted_at,NULL',
-                'gender' => 'required|in:Male,Female',
+                'gender' => 'required|in:'. GENDER_MALE . ',' . GENDER_FEMALE,
                 'food' => 'required',
             ];
         }

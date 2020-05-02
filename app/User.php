@@ -69,7 +69,7 @@ class User extends Authenticatable implements JWTSubject
         if ($this->image) {
             return $value;
         } else {
-            if ($this->gender == 'Male') {
+            if ($this->gender == GENDER_MALE) {
                 return asset('/assets/custom/user/male.webp');
             } else {
                 return asset('/assets/custom/user/female.webp');
