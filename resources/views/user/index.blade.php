@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    User
+    Users
 @endsection
 
 @section('content')
@@ -9,7 +9,11 @@
         <div class="col-lg-12">
             <div class="card card-default">
                 <div class="card-header card-header-border-bottom">
-                    <h2>Users Table</h2>
+                    <h2>Users Table
+                        @can('create.user')
+                            <button type="button" class="mb-1 btn btn-sm btn-outline-info" onclick="window.location.href='/users/create'"><i class="mdi mdi-account-plus"></i></button>
+                        @endcan
+                    </h2>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped">
@@ -34,8 +38,12 @@
                                 <td>{{ $user->breakfast ? 'Yes' : 'No' }}</td>
                                 <td>{{ $user->lunch ? 'Yes' : 'No' }}</td>
                                 <td>
-                                    <button type="button" class="mb-1 btn btn-sm btn-outline-info" onclick="window.location.href='/users/' + {{ $user->id }} + '/edit'"><i class="mdi mdi-pencil"></i></button>
-                                    <button type="button" class="mb-1 btn btn-sm btn-outline-danger" onclick='deleteUser("{{ $user->id }}", "{{ $user->name }}")'><i class="mdi mdi-delete"></i></button>
+                                    @if(auth()->user()->can('edit.user'))
+                                        <button type="button" class="mb-1 btn btn-sm btn-outline-info" onclick="window.location.href='/users/' + {{ $user->id }} + '/edit'"><i class="mdi mdi-pencil"></i></button>
+                                    @endif
+                                    @if(auth()->user()->can('delete.user'))
+                                        <button type="button" class="mb-1 btn btn-sm btn-outline-danger" onclick='deleteUser("{{ $user->id }}", "{{ $user->name }}")'><i class="mdi mdi-delete"></i></button>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

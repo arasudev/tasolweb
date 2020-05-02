@@ -556,6 +556,13 @@
                     </a>
                 </li>
 
+                <li  class="has-sub" >
+                    <a class="sidenav-item-link" href="/users" aria-expanded="false">
+                        <i class="mdi mdi-contact-mail"></i>
+                        <span class="nav-text">Users</span>
+                    </a>
+                </li>
+
 
 
             </ul>
