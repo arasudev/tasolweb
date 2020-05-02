@@ -57,8 +57,8 @@
                                 <label for="gender">Gender</label>
                                 <select name="gender" class="form-control" id="gender" required>
                                     <option value=""> please select a gender</option>
-                                    <option value="Male" {{ $selectedGender == 'Male' ? 'selected' : '' }}>Male</option>
-                                    <option value="Female" {{ $selectedGender == 'Female' ? 'selected' : '' }}>Female</option>
+                                    <option value="{{ GENDER_MALE }}" {{ $selectedGender == GENDER_MALE ? 'selected' : '' }}>{{ GENDER_MALE }}</option>
+                                    <option value="{{ GENDER_FEMALE }}" {{ $selectedGender == GENDER_FEMALE ? 'selected' : '' }}>{{ GENDER_FEMALE }}</option>
                                 </select>
                             </div>
                         </div>
