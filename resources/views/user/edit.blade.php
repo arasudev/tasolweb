@@ -76,7 +76,9 @@
                                 </label>
                             </div>
                         </div>
-                        <button class="btn btn-primary" type="submit">Update User</button>
+                        <div class="text-right">
+                            <button class="btn btn-primary" type="submit">Update User</button>
+                        </div>
                     </form>
                 </span>
             </span>

@@ -20,7 +20,7 @@ class Menu extends Model
      */
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_menu');
+        return $this->belongsToMany(User::class, 'user_menus')->withPivot('count');
     }
 
     /**

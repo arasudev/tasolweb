@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserMenuTable extends Migration
+class CreateUserMenusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateUserMenuTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_menu', function (Blueprint $table) {
+        Schema::create('user_menus', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('menu_id');
             $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
             $table->integer('count')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -29,6 +31,6 @@ class CreateUserMenuTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_menu');
+        Schema::dropIfExists('user_menus');
     }
 }

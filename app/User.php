@@ -46,7 +46,27 @@ class User extends Authenticatable implements JWTSubject
      */
     public function menus()
     {
-        return $this->belongsToMany(Menu::class, 'user_menu');
+        return $this->belongsToMany(Menu::class, 'user_menus')->withPivot('count');
+    }
+
+    /**
+     * Get breakfast menus detail.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function breakfast_menus()
+    {
+        return $this->belongsToMany(Menu::class, 'user_menus')->withPivot('count')->where('type', BREAKFAST_MENU);
+    }
+
+    /**
+     * Get breakfast menus detail.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function lunch_menus()
+    {
+        return $this->belongsToMany(Menu::class, 'user_menus')->withPivot('count')->where('type', LUNCH_MENU);
     }
 
     /**

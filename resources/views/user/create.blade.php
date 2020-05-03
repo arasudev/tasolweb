@@ -71,7 +71,9 @@
                                 </label>
                             </div>
                         </div>
-                        <button class="btn btn-primary" type="submit">Create User</button>
+                        <div class="text-right">
+                            <button class="btn btn-primary" type="submit">Create User</button>
+                        </div>
                     </form>
                 </span>
             </span>

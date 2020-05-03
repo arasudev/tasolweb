@@ -28,7 +28,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth']], function () {
 // Users
     Route::get('/contacts', 'UserController@getContacts');
-    Route::resource('users', 'UserController');
+    Route::resource('uers', 'UserController');
+    Route::resource('breakfasts', 'UserBreakfastController', ['only' => ['show', 'edit', 'update']]);
 });
 
 Route::get('/test', function () {
