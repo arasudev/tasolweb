@@ -40,6 +40,16 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     /**
+     * Get menus detail.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function menus()
+    {
+        return $this->belongsToMany(Menu::class, 'user_menu');
+    }
+
+    /**
      * User belongs to a Team
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
