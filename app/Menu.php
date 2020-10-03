@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Date;
 
 class Menu extends Model
 {
@@ -81,5 +82,29 @@ class Menu extends Model
     public static function getRice()
     {
         return self::whereSlug('rice')->first();
+    }
+
+    /**
+     * Return the Tomorrow breakfast menu details of ordering before day night
+     *
+     * @param $day
+     * @return \Illuminate\Database\Eloquent\HigherOrderBuilderProxy|mixed
+     */
+    public static function getTomorrowMenu($day)
+    {
+        $setting = Setting::with('breakfast_menu')->where('day', $day)->first();
+        return $setting->breakfast_menu;
+    }
+
+    /**
+     * Return the Today's lunch menu details of ordering on current day's morning
+     *
+     * @param $day
+     * @return \Illuminate\Database\Eloquent\HigherOrderBuilderProxy|mixed
+     */
+    public static function getTodayLunchMenus($day)
+    {
+        $setting = Setting::with('lunch_menu_one', 'lunch_menu_two')->where('day', $day)->first();
+        return [$setting->lunch_menu_one, $setting->lunch_menu_two];
     }
 }

@@ -34,6 +34,36 @@ class UserSeeder extends Seeder
                 'breakfast' => true,
                 'lunch' => true,
             ],
+            [
+                'name' => 'Test 1',
+                'email' => 'test1@mallow-tech.com',
+                'password' => 'password',
+                'phone' => '1234567890',
+                'gender' => GENDER_MALE,
+                'team_id' => \App\Team::first()->id,
+                'breakfast' => true,
+                'lunch' => true,
+            ],
+            [
+                'name' => 'Test 2',
+                'email' => 'test2@mallow-tech.com',
+                'password' => 'password',
+                'phone' => '1234567890',
+                'gender' => GENDER_MALE,
+                'team_id' => \App\Team::first()->id,
+                'breakfast' => true,
+                'lunch' => true,
+            ],
+            [
+                'name' => 'Test 3',
+                'email' => 'test3@mallow-tech.com',
+                'password' => 'password',
+                'phone' => '1234567890',
+                'gender' => GENDER_MALE,
+                'team_id' => \App\Team::first()->id,
+                'breakfast' => true,
+                'lunch' => true,
+            ],
         ];
 
         foreach ($users as $user) {

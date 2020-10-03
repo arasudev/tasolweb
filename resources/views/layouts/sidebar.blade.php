@@ -25,9 +25,32 @@
         </div>
         <!-- begin sidebar scrollbar -->
         <div class="sidebar-scrollbar">
-
             <!-- sidebar menu -->
             <ul class="nav sidebar-inner" id="sidebar-menu">
+                <li  class="has-sub" >
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pages"
+                       aria-expanded="false" aria-controls="pages">
+                        <i class="mdi mdi-image-filter-none"></i>
+                        <span class="nav-text">Breakfast</span> <b class="caret"></b>
+                    </a>
+                    <ul  class="collapse"  id="pages"
+                         data-parent="#sidebar-menu">
+                        <div class="sub-menu">
+                            <li >
+                                <a class="sidenav-item-link" href="/breakfasts/{{ auth()->id() }}">
+                                    <span class="nav-text">Settings</span>
+                                </a>
+                            </li>
+                        </div>
+                        <div class="sub-menu">
+                            <li >
+                                <a class="sidenav-item-link" href="/cancel-food">
+                                    <span class="nav-text">Cancel Food</span>
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+                </li>
                 <li  class="has-sub" >
                     <a class="sidenav-item-link" href="/contacts" aria-expanded="false">
                         <i class="mdi mdi-contact-mail"></i>

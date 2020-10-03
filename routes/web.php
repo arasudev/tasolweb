@@ -28,8 +28,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth']], function () {
 // Users
     Route::get('/contacts', 'UserController@getContacts');
-    Route::resource('uers', 'UserController');
+    Route::resource('users', 'UserController');
     Route::resource('breakfasts', 'UserBreakfastController', ['only' => ['show', 'edit', 'update']]);
+    Route::resource('menu-settings', 'MenuSettingController', ['only' => ['index', 'edit', 'update']]);
+
+    Route::get('/cancel-breakfast', 'UserBreakfastController@cancelBreakfastView');
 });
 
 Route::get('/test', function () {

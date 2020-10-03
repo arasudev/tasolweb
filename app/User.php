@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
@@ -10,7 +11,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable, HasRoles;
+    use Notifiable, HasRoles, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -57,6 +58,19 @@ class User extends Authenticatable implements JWTSubject
     public function breakfast_menus()
     {
         return $this->belongsToMany(Menu::class, 'user_menus')->withPivot('count')->where('type', BREAKFAST_MENU);
+    }
+
+    /**
+     * Get breakfast menus detail.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function breakfast_menu_for_next_day()
+    {
+        // TODO :: check with Anandhan
+        $tomorrow = now()->addDay()->format('l');
+        $menu = Menu::getTomorrowMenu($tomorrow);
+        return $this->belongsToMany(Menu::class, 'user_menus')->withPivot('count')->where('menu_id', $menu->id);
     }
 
     /**

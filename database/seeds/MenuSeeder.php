@@ -24,6 +24,9 @@ class MenuSeeder extends Seeder
 
             // Lunch
             ['name' => 'Rice', 'slug' => 'rice', 'type' => LUNCH_MENU, 'bill_type' => BILL_TYPE_COMMON, 'price' => 65],
+            ['name' => 'Tomato Rice', 'slug' => 'tomato-rice', 'type' => LUNCH_MENU, 'bill_type' => BILL_TYPE_INDIVIDUAL, 'price' => 20],
+            ['name' => 'Lemon Rice', 'slug' => 'lemon-rice', 'type' => LUNCH_MENU, 'bill_type' => BILL_TYPE_INDIVIDUAL, 'price' => 20],
+            ['name' => 'Curd Rice', 'slug' => 'curd-rice', 'type' => LUNCH_MENU, 'bill_type' => BILL_TYPE_INDIVIDUAL, 'price' => 20],
         ];
 
         foreach ($menus as $menu) {

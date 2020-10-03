@@ -54,4 +54,15 @@ class UserBreakfastController extends Controller
         }
         return redirect('/breakfasts/' . auth()->user()->id);
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function cancelBreakfastView()
+    {
+        return view('breakfast_menu_settings.update', compact('menus'));
+    }
 }

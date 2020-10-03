@@ -24,3 +24,10 @@ define('WEEKDAYS', [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY]);
 define('SATURDAY', 'saturday');
 define('SUNDAY', 'sunday');
 define('WEEKENDS', [SATURDAY, SUNDAY]);
+
+// Weekends
+define('STATUS_PENDING', 'pending');
+define('STATUS_COMPLETED', 'completed');
+
+// Price for Constants
+define('BREAKFAST_UPMA_CURD_PRICE', 50);
